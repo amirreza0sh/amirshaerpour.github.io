@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Install WordPress on Localhost - ARSP</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A step-by-step guide to installing WordPress on your local machine using XAMPP." />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://amirshaerpour.ir/posts/install-wordpress-localhost/">
+  <meta property="og:site_name" content="ARSP">
+  <meta property="og:title" content="Install WordPress on Localhost">
+  <meta property="og:description" content="A step-by-step guide to installing WordPress on your local machine using XAMPP.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-08-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-08-02T00:00:00+00:00">
+    <meta property="article:tag" content="WordPress">
+    <meta property="article:tag" content="XAMPP">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Install WordPress on Localhost">
+  <meta name="twitter:description" content="A step-by-step guide to installing WordPress on your local machine using XAMPP.">
+
+        <link href=https://amirshaerpour.ir/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://amirshaerpour.ir/css/main.6a0f23ea50fd34b46fee262a5a68e17d458c51a2bc99ba1ba018065de6b180c3.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://amirshaerpour.ir/css/dark.50b57e12d401420df23965fed157368aba37b76df0ecefd0b1ecd4da664f01a0.css"   />
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://amirshaerpour.ir">ARSP</a>
+	</div>
+	<nav>
+		
+		<a href="/">HOME</a>
+		
+		<a href="/posts">POSTS</a>
+		
+		<a href="/about">ABOUT</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+  <article>
+    <div class="post-container">
+      
+      <div class="post-content">
+        <div class="title">
+          <h1 class="title">Install WordPress on Localhost</h1>
+          <div class="meta">Posted on Aug 2, 2026</div>
+        </div>
+        
+        <section class="body">
+          <h1 id="-xampp-">&ndash; XAMPP &ndash;</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In this post, we&rsquo;ll demonstrate how to install WordPress on your local machine using XAMPP, giving you a full local development environment to build and test WordPress sites before deploying them online.</p>
+<p>First, let&rsquo;s take a closer look at these concepts:</p>
+<h2 id="wordpress">WordPress</h2>
+<p>WordPress is the world&rsquo;s most popular open-source content management system (CMS), powering everything from personal blogs to large-scale business websites.</p>
+<p>It is built on PHP and requires a MySQL (or MariaDB) database to store its content, making a local PHP + MySQL stack essential for running it offline.</p>
+<h2 id="xampp-1">XAMPP</h2>
+<p>XAMPP is a free, cross-platform local server package that bundles Apache, MySQL/MariaDB, PHP, and Perl into a single easy-to-install stack.</p>
+<p>It lets you spin up a full web server environment on your own computer in minutes, which is exactly what WordPress needs to run locally.</p>
+<h2 id="requirements">Requirements</h2>
+
+<div class='callout callout-custom' style='background-color: transparent; border: 3px solid #00a7a7;'>
+  <div class="callout-inner">
+    
+    📌 <u>Note</u>
+    <br />
+    Make sure ports 80 and 3306 are free on your machine before starting Apache and MySQL.
+    
+    </div>
+</div>
+
+
+<div class='callout callout-alert' style=''>
+  <div class="callout-inner">
+    
+    🚨 <u>Alert</u>
+    <br />
+    This setup is intended for local development only. Never use these default credentials on a production or public-facing server!
+    
+    </div>
+</div>
+
+<p>For our demonstration, we just need a single machine (Windows, macOS, or Linux) with a stable internet connection to download the required packages.</p>
+<h3 id="install-xampp">Install XAMPP</h3>
+<p>Download the latest XAMPP installer from the official website and run it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># On Linux, download and run the installer</span>
+</span></span><span style="display:flex;"><span>wget https://www.apachefriends.org/xampp-files/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
+</span></span><span style="display:flex;"><span>chmod +x xampp-linux-x64-8.2.12-0-installer.run
+</span></span><span style="display:flex;"><span>sudo ./xampp-linux-x64-8.2.12-0-installer.run
+</span></span></code></pre></div><p>Once installed, start the Apache and MySQL modules from the XAMPP Control Panel (or via command line on Linux):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo /opt/lampp/lampp start
+</span></span></code></pre></div><h3 id="setup-database">Setup Database</h3>
+<p>Open <code>http://localhost/phpmyadmin</code> in your browser and create a new database for WordPress.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> wordpress_local <span style="color:#66d9ef">CHARACTER</span> <span style="color:#66d9ef">SET</span> utf8mb4 COLLATE utf8mb4_unicode_ci;
+</span></span></code></pre></div><h3 id="download-wordpress">Download WordPress</h3>
+<p>Download the latest WordPress package and extract it into the XAMPP web root (<code>htdocs</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /opt/lampp/htdocs
+</span></span><span style="display:flex;"><span>sudo wget https://wordpress.org/latest.tar.gz
+</span></span><span style="display:flex;"><span>sudo tar -xzf latest.tar.gz
+</span></span><span style="display:flex;"><span>sudo rm latest.tar.gz
+</span></span><span style="display:flex;"><span>sudo chown -R daemon:daemon wordpress
+</span></span></code></pre></div><h3 id="configure-wordpress">Configure WordPress</h3>
+<p>Rename the sample config file and set your database credentials:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd wordpress
+</span></span><span style="display:flex;"><span>sudo cp wp-config-sample.php wp-config.php
+</span></span><span style="display:flex;"><span>sudo vim wp-config.php
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">define</span>( <span style="color:#e6db74">&#39;DB_NAME&#39;</span>, <span style="color:#e6db74">&#39;wordpress_local&#39;</span> );
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">define</span>( <span style="color:#e6db74">&#39;DB_USER&#39;</span>, <span style="color:#e6db74">&#39;root&#39;</span> );
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">define</span>( <span style="color:#e6db74">&#39;DB_PASSWORD&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span> );
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">define</span>( <span style="color:#e6db74">&#39;DB_HOST&#39;</span>, <span style="color:#e6db74">&#39;localhost&#39;</span> );
+</span></span></code></pre></div><p>Congrats! Your local server is now ready for WordPress.</p>
+<p>Open up your browser and paste <code>http://localhost/wordpress</code>. The WordPress installation wizard will show up.</p>
+<p>Follow the on-screen steps, pick a site title, create an admin username and password, and enjoy!</p>
+<h1 id="-docker-">&ndash; Docker &ndash;</h1>
+<h2 id="introduction-1">Introduction</h2>
+<p>In this post, we&rsquo;ll also demonstrate how to run WordPress locally using Docker Compose, an alternative to XAMPP that keeps your machine clean and lets you tear down the environment with a single command.</p>
+<h2 id="docker">Docker</h2>
+<p>Docker is a container platform that allows you to package and run applications in isolated environments.</p>
+<p>With Docker Compose, WordPress and its MySQL database can be started together with zero manual configuration.</p>
+<h2 id="requirements-1">Requirements</h2>
+
+<div class='callout callout-custom' style='background-color: transparent; border: 3px solid #00a7a7;'>
+  <div class="callout-inner">
+    
+    📌 <u>Note</u>
+    <br />
+    Ensure Docker and Docker Compose are installed on your machine.
+    
+    </div>
+</div>
+
+<h3 id="setup-cluster">Setup WordPress</h3>
+<p>Create a project directory and docker-compose.yml file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir wordpress-docker <span style="color:#f92672">&amp;&amp;</span> cd wordpress-docker
+</span></span><span style="display:flex;"><span>vim docker-compose.yml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.8&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db_data:/var/lib/mysql</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_ROOT_PASSWORD=BwHVuS6j4U03K6hzXfnXVMSp1</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_DATABASE=wordpress</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_USER=ahsp</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">MYSQL_PASSWORD=BwHVuS6j4U03K6hzXfnXVMSp1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">wordpress</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">wordpress:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8080:80&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">wp_data:/var/www/html</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">WORDPRESS_DB_HOST=db:3306</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">WORDPRESS_DB_USER=ahsp</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">WORDPRESS_DB_PASSWORD=BwHVuS6j4U03K6hzXfnXVMSp1</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">WORDPRESS_DB_NAME=wordpress</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db_data</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">wp_data</span>:
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Run the stack</span>
+</span></span><span style="display:flex;"><span>docker compose up -d
+</span></span></code></pre></div><p>Congrats! Your local WordPress site is now running.</p>
+<p>Open up your browser and paste <code>http://localhost:8080</code>. The WordPress installation wizard will show up.</p>
+<p>Complete the setup and enjoy!</p>
+
+        </section>
+        <div class="post-tags">
+          
+          
+          <nav class="nav tags">
+            <ul class="tags">
+              
+              <li><a href="/tags/wordpress">WordPress</a></li>
+              
+              <li><a href="/tags/xampp">XAMPP</a></li>
+              
+            </ul>
+          </nav>
+          
+          
+        </div>
+      </div>
+
+      
+      
+      <div class="toc">
+        <strong>Table of contents:</strong>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#wordpress">WordPress</a></li>
+    <li><a href="#xampp-1">XAMPP</a></li>
+    <li><a href="#requirements">Requirements</a>
+      <ul>
+        <li><a href="#install-xampp">Install XAMPP</a></li>
+        <li><a href="#setup-database">Setup Database</a></li>
+        <li><a href="#download-wordpress">Download WordPress</a></li>
+        <li><a href="#configure-wordpress">Configure WordPress</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#introduction-1">Introduction</a></li>
+    <li><a href="#docker">Docker</a></li>
+    <li><a href="#requirements-1">Requirements</a>
+      <ul>
+        <li><a href="#setup-cluster">Setup WordPress</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    </article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/amirreza0sh" rel="me" title="GitHub"><svg class="feather">
+   <use href="/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
+</svg></a><a class="border"></a><a class="soc" href="https://linkedin.com/in/amirreza-shaerpour" rel="me" title="Linkedin"><svg class="feather">
+   <use href="/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#linkedin" />
+</svg></a><a class="border"></a><a class="soc" href="https://gitlab.com/amirreza0sh" rel="me" title="GitLab"><svg class="feather">
+   <use href="/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#gitlab" />
+</svg></a><a class="border"></a></div>
+  <div class="footer-info">
+    © 2026 Amirreza Shaerpour
+  </div>
+</footer>
+
+</div>
+    </body>
+</html>
